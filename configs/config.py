@@ -9,7 +9,7 @@ class ModelConfig(PretrainedConfig):
             n_layers: int = 12, # Transformer的层数
             n_heads: int = 16, # 注意力机制的头数
             n_kv_heads: int = 8, # 键值头的数量
-            vocab_size: int = 6144, # 词汇表大小
+            vocab_size: int = 8192, # 词汇表大小
             hidden_dim: int = None, # 隐藏层维度
             multiple_of: int = 64, 
             norm_eps: float = 1e-5, # 归一化层的eps

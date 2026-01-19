@@ -422,7 +422,7 @@ class Transformer(PreTrainedModel):
             self.last_loss = None
 
         # 设置输出
-        self.OUT.__setitem__('loss', self.last_loss)
+        self.OUT.__setitem__('last_loss', self.last_loss)
         self.OUT.__setitem__('logits', logits)
         return self.OUT
 
@@ -481,7 +481,7 @@ class Transformer(PreTrainedModel):
 
 
 # LLaMA2Model.forward 接受两个参数，tokens和targets，其中tokens是输入的张量, 应为int类型
-x = torch.randint(0, 6144, (1, 50)) # [bs, seq_len]
+x = torch.randint(0, 8192, (1, 50)) # [bs, seq_len]
 # 实例化LLaMA2Model
 model = Transformer(args=args)
 # 计算model的全部参数
@@ -490,7 +490,7 @@ print('[INFO] Number of parameters:', num_params)
 
 out = model(x)
 print(f"[INFO] LLaMA2 logits shape: {out.logits.shape}") # [batch_size, 1, vocab_size]
-print("[INFO] Expected logits shape: torch.Size([1, 1, 6144])")
+print("[INFO] Expected logits shape: torch.Size([1, 1, 8192])")
 print("[INFO] LLaMA2 forward test pass! (generate func have not tested)")
 
 # [NOTE] 26.1.12 LLaMA2 forward (probably model) test pass
